@@ -4,17 +4,15 @@
       <div class="codemirror">
         <codemirror v-model="code"/>
       </div>
-      <v-btn @click="getData" color="success" >Run</v-btn>
+      <v-btn @click="getData" color="success">Run</v-btn>
       <v-data-table
         :headers="headers"
-        :items="desserts"
+        :items="results"
         :loading="loading"
         :rows-per-page="rowsPerPage"
         class="elevation-1">
         <template v-slot:items="props">
-          <td v-for="field of props.item">
-            {{ field }}
-          </td>
+          <td v-bind:key="field" v-for="field of props.item">{{ field }}</td>
         </template>
       </v-data-table>
     </v-app>
@@ -23,7 +21,7 @@
 
 <script>
   import axios from 'axios';
-  import codemirror from 'vue-codemirror'
+
   import 'codemirror/mode/sql/sql.js'
   import 'codemirror/theme/solarized.css'
   import 'codemirror/theme/base16-dark.css'
@@ -31,16 +29,16 @@
   export default {
     data: () => ({
       headers: [],
-      desserts: [],
+      results: [],
       rowsPerPage : "-1",
       loading : false,
-      code : `-- SQL Statement
-SELECT SCHEMA_NAME, TABLE_NAME, RECORD_COUNT FROM M_TABLES ORDER BY RECORD_COUNT DESC
+      code : `-- Simple Test
+SELECT CURRENT_USER FROM DUMMY;
 `
     }),
     methods: {
-      getData: function(e){
-        axios.post("http://localhost:9999/api/top-tables/",{
+      getData: function(){
+        axios.post(process.env.VUE_APP_HANA_SQL_SANDBOX_BACKEND + '/api/sql/',{
           sql : this.code
         }).then(res=>{
           this.loading=false;
@@ -49,12 +47,14 @@ SELECT SCHEMA_NAME, TABLE_NAME, RECORD_COUNT FROM M_TABLES ORDER BY RECORD_COUNT
             let row = res.data[0];
             for(var field in row) this.headers.push({text: field, value: field});
           }
-          this.desserts = res.data;
+          this.results = res.data;
         }, err=> {
           this.loading = false;
           alert(JSON.stringify(err.response.data));
         }).catch(err=>{
+          alert(`An error occured communicating with the backend.
           
+          ${err}`);
         })
       }
     },
@@ -63,9 +63,3 @@ SELECT SCHEMA_NAME, TABLE_NAME, RECORD_COUNT FROM M_TABLES ORDER BY RECORD_COUNT
     }
   }
 </script>
-
-<style>
-.CodeMirror {
-  height: 150px;
-}
-</style>
