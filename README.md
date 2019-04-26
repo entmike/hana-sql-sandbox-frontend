@@ -6,6 +6,11 @@ Simple Vue app that runs SQL Statements for a HANA backend exposed by https://gi
 2) Vue CLI installed `npm i -g @vue/cli`
 3) `hana-sql-sandbox-backend` running (https://github.com/entmike/hana-sql-sandbox-backend)
 
+## Docker Installation
+Easy-mode here:
+
+https://hub.docker.com/r/entmike/hana-sql-sandbox 
+
 ## Installation 
 ```
 git clone https://github.com/entmike/hana-sql-sandbox-frontend.git
