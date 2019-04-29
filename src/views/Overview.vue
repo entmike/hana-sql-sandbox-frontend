@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chip color="primary" text-color="white">{{results.backend_information.user}}@{{results.backend_information.server}}:{{results.backend_information.port}}</v-chip>
+    <v-chip color="primary" label outline text-color="white">{{results.backend_information.user}}@{{results.backend_information.server}}:{{results.backend_information.port}}</v-chip>
     <v-list two-line>
       <template v-for="(item,index) in results.M_SYSTEM_OVERVIEW">
         <v-list-tile :key="index">
