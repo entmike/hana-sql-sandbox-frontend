@@ -6,6 +6,7 @@ import VueCodemirror from 'vue-codemirror'
 // require styles
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/mode/javascript/javascript.js'
+import router from './router'
 
 if(!process.env.VUE_APP_HANA_SQL_SANDBOX_BACKEND){
   alert("VUE_APP_HANA_SQL_SANDBOX_BACKEND environment variable not set.  Please set your environment and restart this frontend server.")
@@ -25,6 +26,7 @@ if(!process.env.VUE_APP_HANA_SQL_SANDBOX_BACKEND){
   })
   
   new Vue({
-    render: h => h(App),
+    router,
+    render: h => h(App)
   }).$mount('#app')
 }
