@@ -1,6 +1,5 @@
 <template>
   <div>
-    <v-chip color="primary" label outline text-color="white">{{results.backend_information.user}}@{{results.backend_information.server}}:{{results.backend_information.port}}</v-chip>
     <v-list two-line>
       <template v-for="(item,index) in results.M_SYSTEM_OVERVIEW">
         <v-list-tile :key="index">
@@ -24,7 +23,7 @@ export default {
   }),
   components: {},
   methods: {
-    getData: function(){
+    getData(){
       axios.post(process.env.VUE_APP_HANA_SQL_SANDBOX_BACKEND + '/api/overview/',{ }).then(res=>{
         if(res.data){
           this.results = res.data;

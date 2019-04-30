@@ -11,21 +11,31 @@
             <v-btn v-if="typeof item.link === 'undefined'" :key=index flat :to="'/' + item.title">{{item.title}}</v-btn>
             <v-btn v-else :key=index flat :to="'/' + item.link">{{item.title}}</v-btn>
         </template>
+        <v-spacer />
+        <v-chip color="primary" label outline text-color="white">{{systemInformation.user}}@{{systemInformation.server}}:{{systemInformation.port}}</v-chip>
     </v-toolbar>
 </template>
 
 <script>
 export default {
     name: 'AppNav',
-    data() {
-        return {
+    props : {
+        systemInformation : Object
+    },
+    data(){
+        return{
             appTitle: 'HANA Sandbox',
             drawer: false,
             items: [
-                { title: 'Overview', link : '' },
-                { title: 'SQL', link : 'sql' }
+                { title: 'Overview',link: '' },
+                { title: 'SQL',link: 'sql' }
             ]
         };
+    },
+    watch : {
+        sysinfo(c){
+            console.log(c);
+        }
     }
 };
 </script>
