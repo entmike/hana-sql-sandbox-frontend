@@ -3,7 +3,10 @@
       <div class="codemirror">
         <codemirror v-model="code"/>
       </div>
-      <v-btn @click="getData" color="success">Run</v-btn>
+      <v-toolbar>
+        <v-btn @click="getData" color="success">Run</v-btn>
+        <download-excel :data = "results"><v-btn color="success">Download</v-btn></download-excel>
+      </v-toolbar>
       <v-data-table
         :headers="headers"
         :items="results"
@@ -19,7 +22,7 @@
 
 <script>
   import axios from 'axios';
-
+  import JsonExcel from 'vue-json-excel'
   import 'codemirror/mode/sql/sql.js'
   import 'codemirror/theme/solarized.css'
   import 'codemirror/theme/base16-dark.css'
