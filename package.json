@@ -1,7 +1,14 @@
 {
-  "name": "sandbox",
-  "version": "0.1.0",
-  "private": true,
+  "name": "hana-sql-sandbox-frontend",
+  "version": "1.0.0",
+  "description": "Simple Vue app that runs SQL Statements for a HANA backend exposed by https://github.com/entmike/hana-sql-sandbox-backend.",
+  "keywords": [
+    "SAP",
+    "HANA",
+    "Vue"
+  ],
+  "author": "Mike Howles",
+  "license": "ISC",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
