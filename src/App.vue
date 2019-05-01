@@ -30,7 +30,7 @@
           if(res.data){
             this.results = res.data;
             this.systemInformation = res.data.backend_information;
-            console.log(this.results);
+            // console.log(this.results);
           }else{
             alert(JSON.stringify(res));
             this.results = {};
@@ -42,11 +42,6 @@
           ${err}`);
         })
       },
-    },
-    watch : {
-      results(v){
-        // alert(JSON.stringify(v));
-      }
     },
     mounted(){
         this.getData();

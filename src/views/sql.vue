@@ -22,7 +22,6 @@
 
 <script>
   import axios from 'axios';
-  import JsonExcel from 'vue-json-excel'
   import 'codemirror/mode/sql/sql.js'
   import 'codemirror/theme/solarized.css'
   import 'codemirror/theme/base16-dark.css'

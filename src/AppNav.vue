@@ -31,11 +31,6 @@ export default {
                 { title: 'SQL',link: 'sql' }
             ]
         };
-    },
-    watch : {
-        sysinfo(c){
-            console.log(c);
-        }
     }
 };
 </script>
